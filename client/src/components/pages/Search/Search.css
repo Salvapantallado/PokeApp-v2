@@ -1,0 +1,26 @@
+.input-search {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  background-color: transparent;
+  font-size: 0.9rem;
+  font-weight: 400;
+  box-shadow: none;
+  border: 0.1rem solid #cccccc;
+  border-radius: 1rem;
+  color: #cccccc;
+  margin-bottom: 0.5rem;
+}
+.input-search:active {
+  box-shadow: none;
+}
+
+.rigthSide {
+  flex: 50%;
+}
+
+.searchBar {
+  display: block;
+  right: 30em;
+  margin: 50px;
+  padding: 40px;
+}

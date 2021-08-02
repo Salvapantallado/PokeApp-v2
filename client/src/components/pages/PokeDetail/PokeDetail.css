@@ -1,0 +1,99 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row.center {
+  justify-content: center;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+.row.center .card:hover {
+  color: #ff8000;
+}
+
+img {
+  border-radius: 0.5rem;
+  margin: 1rem;
+  margin-left: 2px;
+}
+img.medium {
+  max-width: 18rem;
+  width: 90%;
+}
+
+.Card {
+  border: 0.1rem #000000 solid;
+  background-color: #f8f8f8;
+  border-radius: 1rem;
+  margin: 1.8rem;
+  text-decoration: none;
+  width: 60em;
+  height: 100%;
+  padding: 1em;
+}
+
+.large {
+  display: block;
+  margin: 16px auto;
+  border-radius: 16px;
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+}
+
+.pokedetail .Card .large {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.pokedetail {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.body-card > * {
+  color: #000000;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.body-card h1 {
+  font-size: 2rem;
+  padding: 0rem;
+  text-decoration: none;
+}
+
+.body-card h4 {
+  font-size: 1.4rem;
+  padding: 0rem 0;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.notFound img {
+  zoom: 3;
+}

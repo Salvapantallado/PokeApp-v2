@@ -1,21 +1,42 @@
-const { Pokemon, conn } = require('../../src/db.js');
-const { expect } = require('chai');
+const { Pokemon, conn } = require("../../src/db.js");
+const { expect } = require("chai");
 
-describe('Pokemon model', () => {
-  before(() => conn.authenticate()
-    .catch((err) => {
-      console.error('Unable to connect to the database:', err);
-    }));
-  describe('Validators', () => {
-    beforeEach(() => Pokemon.sync({ force: true }));
-    describe('name', () => {
-      it('should throw an error if name is null', (done) => {
-        Pokemon.create({})
-          .then(() => done(new Error('It requires a valid name')))
-          .catch(() => done());
+describe("Pokemon model", () => {
+  before(() =>
+    conn.authenticate().catch((err) => {
+      console.error("Unable to connect to the database:", err);
+    })
+  );
+  describe("Validators", () => {
+    describe("attack", () => {
+      it("throw error if integer datatype is completed with a string or viceversa", async () => {
+        try {
+          await Pokemon.create({
+            name: "Metapod",
+            attack: "I am a string",
+          });
+        } catch (err) {}
+        const pokemon = await Pokemon.findOne({
+          where: {
+            name: "Metapod",
+          },
+        });
+        expect(pokemon).to.equal(null);
       });
-      it('should work when its a valid name', () => {
-        Pokemon.create({ name: 'Pikachu' });
+    });
+
+    describe("Create a new Pokemon", () => {
+      describe("new Pokemon", () => {
+        it("should create a new Pokemon correctly", async () => {
+          await Pokemon.create({ name: "Liwi", attack: 255 });
+          const pokemon = await Pokemon.findOne({
+            where: {
+              name: "Liwi",
+            },
+          });
+          expect(pokemon.name).to.equal("Liwi");
+          expect(pokemon.attack).to.equal(255);
+        });
       });
     });
   });
