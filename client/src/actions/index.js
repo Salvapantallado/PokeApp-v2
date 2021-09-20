@@ -3,7 +3,9 @@ import * as actions from "./actionTypes";
 
 export const getPokemons = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:3001/pokemons");
+    const res = await axios.get(
+      `/pokemons` || "http://localhost:3001/pokemons"
+    );
     dispatch({ type: actions.GET_POKEMONS, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -12,7 +14,9 @@ export const getPokemons = () => async (dispatch) => {
 
 export const getPokemonByName = (name) => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:3001/pokemons?name=" + name);
+    const res = await axios.get(
+      `/pokemons?name=` + name || "http://localhost:3001/pokemons?name=" + name
+    );
     dispatch({ type: actions.SEARCH_POKEMON, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -21,7 +25,9 @@ export const getPokemonByName = (name) => async (dispatch) => {
 
 export const getPokemonByID = (id) => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:3001/pokemons/" + id);
+    const res = await axios.get(
+      `/pokemons/` + id || "http://localhost:3001/pokemons/" + id
+    );
     console.log(res.data);
     dispatch({ type: actions.GET_POKE_DETAIL, payload: res.data });
   } catch (err) {
@@ -42,7 +48,7 @@ export const clearPokeDetail = () => {
 
 export const getTypes = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:3001/types");
+    const res = await axios.get(`/types` || "http://localhost:3001/types");
     dispatch({ type: actions.GET_TYPES, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -51,7 +57,10 @@ export const getTypes = () => async (dispatch) => {
 
 export const createPokemon = (input) => async (dispatch) => {
   try {
-    const res = await axios.post("http://localhost:3001/pokemons/", input);
+    const res = await axios.post(
+      `/pokemons` || "http://localhost:3001/pokemons/",
+      input
+    );
     dispatch({ type: actions.POST_POKEMON, payload: res.data });
   } catch (err) {
     alert("BIG TIME ERROR Pokemon fail");
