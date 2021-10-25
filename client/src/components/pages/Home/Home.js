@@ -10,7 +10,7 @@ export function Home() {
   const pokemonList = useSelector((state) => state.pokemonList);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(12);
-
+  const [currentPokemons] = useState([]);
   useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
@@ -19,7 +19,7 @@ export function Home() {
 
   const lastPostIndex = currentPage * pokemonsPerPage;
   const firstPostIndex = lastPostIndex - pokemonsPerPage;
-  const currentPokemons = pokemonList.slice(firstPostIndex, lastPostIndex);
+  currentPokemons = pokemonList.slice(firstPostIndex, lastPostIndex);
 
   const pageNumber = Math.ceil(pokemonList.length / pokemonsPerPage);
 
