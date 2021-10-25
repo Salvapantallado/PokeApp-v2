@@ -46,6 +46,9 @@ img {
   height: 18em;
   padding: 2em;
   transition: 0.35s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-body > * {
