@@ -7,6 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import Store from "./store/index";
 import { Provider } from "react-redux";
 
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API;
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
