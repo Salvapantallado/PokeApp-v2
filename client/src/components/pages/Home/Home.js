@@ -10,7 +10,7 @@ export function Home() {
   const pokemonList = useSelector((state) => state.pokemonList);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(12);
-  const [currentPokemons] = useState([]);
+  let [currentPokemons] = useState([]);
   useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
