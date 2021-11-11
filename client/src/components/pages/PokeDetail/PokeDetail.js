@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPokemonByID, clearPokeDetail } from "../../../actions/index.js";
 import "./PokeDetail.css";
-import "../../Home/Home.css"
+import "../Home/Home.css"
 import pokerror from "../Search/pokerror.png";
 
 export function PokeDetail() {
