@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPokemonByID, clearPokeDetail } from "../../../actions/index.js";
 import "./PokeDetail.css";
+import "../../Home/Home.css"
 import pokerror from "../Search/pokerror.png";
 
 export function PokeDetail() {
@@ -38,32 +39,34 @@ export function PokeDetail() {
   } else {
     console.log(pokemonDetail);
     return (
-      <div className="pokedetail">
-        <div key={pokemonDetail.id} className="Card">
-          <img
-            className="large"
-            src={
-              pokemonDetail[0].image
-                ? pokemonDetail[0].image
-                : "https://www.kindpng.com/picc/m/107-1075263_transparent-pokeball-png-pokemon-ball-2d-png-download.png"
-            }
-            alt={pokemonDetail[0].name}
-          />
-          <div className="body-card">
-            <h2>{`Name: ${pokemonDetail[0].name}`}</h2>
-            <h4>{`ID: ${pokemonDetail[0].id}`}</h4>
-            <h4>{`HP: ${pokemonDetail[0].hp}`}</h4>
-            <h4>{`Attack: ${pokemonDetail[0].attack}`}</h4>
-            <h4>{`Defense: ${pokemonDetail[0].defense}`}</h4>
-            <h4>{`Speed: ${pokemonDetail[0].speed}`}</h4>
-            <h4>{`Types: ${pokemonDetail[0].types
-              .map((x) => x.name)
-              .toString()}`}</h4>
-            <h4>{`Height: ${pokemonDetail[0].height}`}</h4>
-            <h4>{`Weight: ${pokemonDetail[0].weight}`}</h4>
-          </div>
-        </div>
-      </div>
+      <div className="home">
+        <div className="pokedetail">
+          <div key={pokemonDetail.id} className="Card">
+            <img
+              className="large"
+              src={
+                pokemonDetail[0].image
+                  ? pokemonDetail[0].image
+                  : "https://www.kindpng.com/picc/m/107-1075263_transparent-pokeball-png-pokemon-ball-2d-png-download.png"
+              }
+              alt={pokemonDetail[0].name}
+            />
+            <div className="body-card">
+              <h2>{`Name: ${pokemonDetail[0].name}`}</h2>
+              <h4>{`ID: ${pokemonDetail[0].id}`}</h4>
+              <h4>{`HP: ${pokemonDetail[0].hp}`}</h4>
+              <h4>{`Attack: ${pokemonDetail[0].attack}`}</h4>
+             <h4>{`Defense: ${pokemonDetail[0].defense}`}</h4>
+              <h4>{`Speed: ${pokemonDetail[0].speed}`}</h4>
+              <h4>{`Types: ${pokemonDetail[0].types
+                .map((x) => x.name)
+                .toString()}`}</h4>
+              <h4>{`Height: ${pokemonDetail[0].height}`}</h4>
+              <h4>{`Weight: ${pokemonDetail[0].weight}`}</h4>
+            </div>
+         </div>
+       </div>
+      </div> 
     );
   }
 }
