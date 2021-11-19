@@ -8,5 +8,4 @@
   <img height="150" src="./pokemon.png" />
 </p>
 
-## Fullstack web development project using:
-## Node.js, Sequelize, PosgreSQL, React, Redux and pure CSS.
+## Fullstack web development project using: <br/> Node.js, Sequelize, PosgreSQL, React, Redux and pure CSS.
