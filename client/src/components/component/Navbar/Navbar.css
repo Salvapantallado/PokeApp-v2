@@ -46,3 +46,23 @@
   justify-content: flex-end;
   padding-right: 25px;
 }
+
+@media screen and (max-width: 875px) {
+  .Navbar .leftSide .logo {
+    margin-left: 5px;
+    height: 50px;
+} 
+  
+  .Navbar .leftSide .links {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+  
+.Navbar .leftSide .links a {
+  font-size: 10px;
+  margin: 15px;
+}
+}
