@@ -30,3 +30,11 @@
 .form select {
   margin-top: 18px;
 }
+
+@media screen and (max-width: 875px) {
+  .form {
+    margin: 30px;
+    padding: 20px;
+    flex-direction: column;
+}
+}
