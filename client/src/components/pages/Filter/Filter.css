@@ -19,3 +19,20 @@
 .filter1 select {
   margin-right: 50px;
 }
+
+@media screen and (max-width: 875px) {
+  .asc {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    width: 50%
+  }
+  .asc select{
+    margin-bottom: 15px;
+  }
+  
+  .filter{
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
