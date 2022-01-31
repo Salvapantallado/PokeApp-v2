@@ -40,4 +40,11 @@
   .form .photo {
   margin-top: 0;
 }
+  
+  .form .table {
+    width: -webkit-fill-available;
+}
+  .form .table input {
+    width: -webkit-fill-available;
+  }
 }
