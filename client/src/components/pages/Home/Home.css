@@ -26,3 +26,9 @@
   color: #ff8000;
   border-color: #ff8000;
 }
+
+@media screen and (max-width: 875px) {
+ .home{
+   background-size: cover;
+  }
+}
