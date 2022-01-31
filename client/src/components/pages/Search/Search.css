@@ -24,3 +24,11 @@
   margin: 50px;
   padding: 40px;
 }
+
+@media screen and (max-width: 875px) {
+  .searchBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
