@@ -37,4 +37,7 @@
     padding: 20px;
     flex-direction: column;
 }
+  .form .photo {
+  margin-top: 0;
+}
 }
