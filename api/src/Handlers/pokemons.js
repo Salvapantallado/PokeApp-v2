@@ -232,8 +232,11 @@ const getAppPokes = async () => {
 
 const getAllPokes = async () => {
   try {
-    const pokemonApi = await getApiPokes();
-    const pokemonApp = await getAppPokes();
+   // const pokemonApi = await getApiPokes();
+   // const pokemonApp = await getAppPokes();
+    const [pokemonApi, pokemonApp] = await Promise.all([getApiPokes(),
+    getAppPokes()
+    ]);
     const totalPokemons = await pokemonApi.concat(pokemonApp);
     return totalPokemons;
   } catch (error) {
