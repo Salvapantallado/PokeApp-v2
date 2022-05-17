@@ -2,6 +2,7 @@ import React from "react";
 import Pokeball from "./Pokeball.png";
 import { Link } from "react-router-dom";
 import Plink from "../../helpers/plink.mp3";
+import "./Navbar.css"
 
 export function Navbar() {
   const playAudio = () => {
