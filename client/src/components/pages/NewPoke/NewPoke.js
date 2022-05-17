@@ -8,8 +8,6 @@ import goBack from "../../helpers/goBack.png";
 import { useHistory } from "react-router-dom";
 import Bump from "../../helpers/Bump.mp3";
 
-
-
 export function NewPoke() {
   const dispatch = useDispatch();
   const pokemonTypes = useSelector((state) => state.pokemonTypes);
@@ -44,7 +42,7 @@ export function NewPoke() {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-      types: [{name: input.types}]
+      types: [{ name: input.types }],
     });
     setErrors(
       validation({
@@ -74,114 +72,116 @@ export function NewPoke() {
   };
   return (
     <div className="home">
-
-    <div className="form">
-    <div className="return">
-                <button onClick={() => nav("/home")}>
-                  <img src={goBack} alt="return" />
-                </button>
-              </div>
-      <form className="table" onSubmit={handleSubmit}>
-        <div>
-          <label>Pokemon name:</label>
-          <input
-            className={errors.name && "danger"}
-            type="text"
-            name="name"
-            onChange={handleInputChange}
-            value={input.name}
-          />
-          {errors.name && <p className="danger">{errors.name}</p>}
-
+      <div className="form">
+        <div className="return">
+          <button onClick={() => nav("/home")}>
+            <img src={goBack} alt="return" />
+          </button>
+        </div>
+        <form className="table" onSubmit={handleSubmit}>
           <div>
-            <label>HP:</label>
+            <label>Pokemon name:</label>
             <input
-              className={errors.hp && "danger"}
-              type="number"
-              name="hp"
+              className={errors.name && "danger"}
+              type="text"
+              name="name"
               onChange={handleInputChange}
-              value={input.hp}
+              value={input.name}
             />
-            {errors.hp && <p className="danger">{errors.hp}</p>}
+            {errors.name && <p className="danger">{errors.name}</p>}
 
             <div>
-              <label>Attack:</label>
+              <label>HP:</label>
               <input
-                className={errors.attack && "danger"}
+                className={errors.hp && "danger"}
                 type="number"
-                name="attack"
+                name="hp"
                 onChange={handleInputChange}
-                value={input.attack}
+                value={input.hp}
               />
-              {errors.attack && <p className="danger">{errors.attack}</p>}
+              {errors.hp && <p className="danger">{errors.hp}</p>}
 
               <div>
-                <label>Defense:</label>
+                <label>Attack:</label>
                 <input
-                  className={errors.defense && "danger"}
+                  className={errors.attack && "danger"}
                   type="number"
-                  name="defense"
+                  name="attack"
                   onChange={handleInputChange}
-                  value={input.defense}
+                  value={input.attack}
                 />
-                {errors.defense && <p className="danger">{errors.defense}</p>}
+                {errors.attack && <p className="danger">{errors.attack}</p>}
 
                 <div>
-                  <label>Speed:</label>
+                  <label>Defense:</label>
                   <input
-                    className={errors.speed && "danger"}
+                    className={errors.defense && "danger"}
                     type="number"
-                    name="speed"
+                    name="defense"
                     onChange={handleInputChange}
-                    value={input.speed}
+                    value={input.defense}
                   />
-                  {errors.speed && <p className="danger">{errors.speed}</p>}
+                  {errors.defense && <p className="danger">{errors.defense}</p>}
 
                   <div>
-                    <label>Height:</label>
+                    <label>Speed:</label>
                     <input
-                      className={errors.height && "danger"}
+                      className={errors.speed && "danger"}
                       type="number"
-                      name="height"
+                      name="speed"
                       onChange={handleInputChange}
-                      value={input.height}
+                      value={input.speed}
                     />
-                    {errors.height && <p className="danger">{errors.height}</p>}
+                    {errors.speed && <p className="danger">{errors.speed}</p>}
 
                     <div>
-                      <label>Weight:</label>
+                      <label>Height:</label>
                       <input
-                        className={errors.weight && "danger"}
+                        className={errors.height && "danger"}
                         type="number"
-                        name="weight"
+                        name="height"
                         onChange={handleInputChange}
-                        value={input.weight}
+                        value={input.height}
                       />
-                      {errors.weight && (
-                        <p className="danger">{errors.weight}</p>
+                      {errors.height && (
+                        <p className="danger">{errors.height}</p>
                       )}
 
-                      <br />
-                      <div className="types-container">
-                        <select onChange={(e) => handleTypes(e)}>
-                          {pokemonTypes &&
-                            pokemonTypes.map((type, i) => (
-                              <option key={i} value={type.name}>
-                                {type.name}
-                              </option>
+                      <div>
+                        <label>Weight:</label>
+                        <input
+                          className={errors.weight && "danger"}
+                          type="number"
+                          name="weight"
+                          onChange={handleInputChange}
+                          value={input.weight}
+                        />
+                        {errors.weight && (
+                          <p className="danger">{errors.weight}</p>
+                        )}
+
+                        <br />
+                        <div className="types-container">
+                          <select onChange={(e) => handleTypes(e)}>
+                            {pokemonTypes &&
+                              pokemonTypes.map((type, i) => (
+                                <option key={i} value={type.name}>
+                                  {type.name}
+                                </option>
+                              ))}
+                          </select>
+                          {console.log(Types)}
+                          {Types &&
+                            Types.map((el, i) => (
+                              <span key={i}>
+                                <label>{el} / </label>
+                              </span>
                             ))}
-                        </select>
-                        {console.log(Types)}
-                        {Types &&
-                          Types.map((el, i) => (
-                            <span key={i}>
-                              <label>{el} / </label>
-                            </span>
-                          ))}
-                        <span>
-                          {Types.length ? Types.length : "0"}
-                          /2
-                        </span>
+                          <span>
+                            {Types.length ? Types.length : "0"}
+                            /2
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -189,21 +189,25 @@ export function NewPoke() {
               </div>
             </div>
           </div>
-        </div>
-        {!input.name || !input.defense || !input.speed || !input.attack || !input.hp || !input.weight || !input.height || !input.types ? (
-          <button className="btn1-disabled" type="submit" disabled="disabled">
-          Create!
-        </button>
-        ) : (
-          <button className="btn1" type="submit">
-          Create!
-        </button>
-        )}
-        
-      </form>
+          {!input.name ||
+          !input.defense ||
+          !input.speed ||
+          !input.attack ||
+          !input.hp ||
+          !input.weight ||
+          !input.height ||
+          !input.types ? (
+            <button className="btn1-disabled" type="submit" disabled="disabled">
+              Create!
+            </button>
+          ) : (
+            <button className="btn1" type="submit">
+              Create!
+            </button>
+          )}
+        </form>
+      </div>
     </div>
-    </div>
-
   );
 }
 

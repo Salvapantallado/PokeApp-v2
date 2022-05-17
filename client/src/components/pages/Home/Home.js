@@ -24,17 +24,17 @@ export function Home() {
   console.log(pokemonList);
 
   const lastPostIndex = currentPage * pokemonsPerPage;
-    const firstPostIndex = lastPostIndex - pokemonsPerPage;
-    currentPokemons = pokemonList.slice(firstPostIndex, lastPostIndex);
+  const firstPostIndex = lastPostIndex - pokemonsPerPage;
+  currentPokemons = pokemonList.slice(firstPostIndex, lastPostIndex);
 
-    if(filteredArray.length === 0){
-      pageNumber = Math.ceil(pokemonList.length / pokemonsPerPage);
-    }
-    if(filteredArray.length > 0){
-      pageNumber = Math.ceil(filteredArray.length / pokemonsPerPage);
-    }
+  if (filteredArray.length === 0) {
+    pageNumber = Math.ceil(pokemonList.length / pokemonsPerPage);
+  }
+  if (filteredArray.length > 0) {
+    pageNumber = Math.ceil(filteredArray.length / pokemonsPerPage);
+  }
 
-    console.log(pageNumber);
+  console.log(pageNumber);
 
   const searchFilter = pokemonList.filter((val) => {
     if (searchedPokemons === "" || searchedPokemons.length === 0) {
@@ -51,8 +51,6 @@ export function Home() {
   pokeSearch = searchFilter.slice(firstPostIndex2, lastPostIndex2);
 
   console.log(searchedPokemons);
-  
-  
 
   if (pokemonList.length < 12) {
     return (
@@ -66,31 +64,33 @@ export function Home() {
     );
   } else {
     return (
-        <div className="home">
-          <div className="search-filter">
-            <input
-              type="text"
-              placeholder="Search pokemon..."
-              onChange={(e) => setSearchedPokemons(e.target.value)}
-            />
-            <Filter firstPostIndex={firstPostIndex} lastPostIndex={lastPostIndex}/>
-
-          </div>
-          <div className="row center">
-            {searchFilter.length === 0 || searchFilter.length === null || filteredArray.length > 0 ? (
-              null
-            ) : (
-              pokeSearch.map((pokemon) => {
-                return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>;
-              })
-            )}
-          </div>
-          <Pagination
-            pageNumber={pageNumber}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+      <div className="home">
+        <div className="search-filter">
+          <input
+            type="text"
+            placeholder="Search pokemon..."
+            onChange={(e) => setSearchedPokemons(e.target.value)}
+          />
+          <Filter
+            firstPostIndex={firstPostIndex}
+            lastPostIndex={lastPostIndex}
           />
         </div>
+        <div className="row center">
+          {searchFilter.length === 0 ||
+          searchFilter.length === null ||
+          filteredArray.length > 0
+            ? null
+            : pokeSearch.map((pokemon) => {
+                return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>;
+              })}
+        </div>
+        <Pagination
+          pageNumber={pageNumber}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
     );
   }
 }
