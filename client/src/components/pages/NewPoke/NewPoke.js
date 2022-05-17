@@ -4,10 +4,22 @@ import { validation } from "./validation.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { createPokemon } from "../../../actions";
+import goBack from "../../helpers/goBack.png";
+import { useHistory } from "react-router-dom";
+import Bump from "../../helpers/Bump.mp3";
+
+
 
 export function NewPoke() {
   const dispatch = useDispatch();
   const pokemonTypes = useSelector((state) => state.pokemonTypes);
+  const history = useHistory();
+
+  const nav = (path) => {
+    new Audio(Bump).play();
+    history.push(path);
+  };
+
   const [input, setInput] = React.useState({
     name: "",
     hp: "",
@@ -17,14 +29,13 @@ export function NewPoke() {
     height: "",
     weight: "",
     types: "",
-    image:
-      "https://www.kindpng.com/picc/m/107-1075263_transparent-pokeball-png-pokemon-ball-2d-png-download.png",
   });
 
   const [errors, setErrors] = React.useState({});
 
   const [Types, setTypes] = React.useState([]);
 
+  /*eslint-disable*/
   useEffect(() => {
     setInput({ ...input, types: Types });
   }, [Types]);
@@ -33,6 +44,7 @@ export function NewPoke() {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
+      types: [{name: input.types}]
     });
     setErrors(
       validation({
@@ -61,12 +73,14 @@ export function NewPoke() {
     }
   };
   return (
+    <div className="home">
+
     <div className="form">
-      <img
-        className="photo"
-        src="https://cdn.gimme.network/img/2019/01/LA3KN50RTYXE60QS_760x350.jpg"
-        alt="poke foto"
-      />
+    <div className="return">
+                <button onClick={() => nav("/home")}>
+                  <img src={goBack} alt="return" />
+                </button>
+              </div>
       <form className="table" onSubmit={handleSubmit}>
         <div>
           <label>Pokemon name:</label>
@@ -157,6 +171,7 @@ export function NewPoke() {
                               </option>
                             ))}
                         </select>
+                        {console.log(Types)}
                         {Types &&
                           Types.map((el, i) => (
                             <span key={i}>
@@ -175,11 +190,20 @@ export function NewPoke() {
             </div>
           </div>
         </div>
-        <button className="btn1" type="submit">
+        {!input.name || !input.defense || !input.speed || !input.attack || !input.hp || !input.weight || !input.height || !input.types ? (
+          <button className="btn1-disabled" type="submit" disabled="disabled">
           Create!
         </button>
+        ) : (
+          <button className="btn1" type="submit">
+          Create!
+        </button>
+        )}
+        
       </form>
     </div>
+    </div>
+
   );
 }
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 .LandingPage {
-  background-image: url("https://c4.wallpaperflare.com/wallpaper/390/399/816/pokemon-bulbasaur-squirtle-video-games-wallpaper-preview.jpg");
+  background-image: url("https://external-preview.redd.it/z7_wYb9-YSvt0pDJlDIu8iuK_aWdqZPg0wvrGdwNvBw.png?auto=webp&s=b40bf3d0bccf7fe4f8dc601182710ca34eac2222");
   background-size: cover;
   background-position: center 70%;
   overflow: hidden;
@@ -27,6 +27,7 @@
 }
 
 .btn:hover {
+  cursor: pointer;
   background-position: center;
   color: #ffb703;
   text-decoration: none;

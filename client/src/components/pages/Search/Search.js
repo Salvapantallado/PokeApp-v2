@@ -49,7 +49,8 @@ export function Search() {
             .filter((val) => {
               if (searchname === "" || searchname === undefined) {
                 return val;
-              } else if (
+              } 
+              if (
                 val.name.toLowerCase().includes(searchname.toLowerCase())
               )
                 return val;

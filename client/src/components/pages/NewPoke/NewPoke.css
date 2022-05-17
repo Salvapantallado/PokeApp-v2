@@ -1,48 +1,95 @@
 .form {
   display: flex;
+  width: 70%;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   border: 4px solid #ff0000;
   border-radius: 2rem;
   margin: 80px;
-  padding: 70px;
+  background-image: url("https://i0.wp.com/www.alphr.com/wp-content/uploads/2016/07/whos_that_pokemon.png?fit=1920%2C1080&ssl=1");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-.form .table .btn1 {
-  width: 300px;
-  height: 60px;
-  border-radius: 1rem;
-  margin-top: 50px;
+.table{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  padding: 20px 0 20px 35px;
+  min-height: 70vh;
+  max-height: 70vh;
+}
+
+.danger {
+  background-color: cadetblue;
+  color: black;
+  width: fit-content;
+  margin: 0;
+}
+
+.table input {
+  margin: 10px
+}
+.btn1 {
+  margin-right: 20px;
+  width: 180px;
+  height: 30px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: fixed;
+  left: 400px;
+}
+.btn1-disabled{
+  margin-right: 20px;
+  width: 180px;
+  height: 30px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: fixed;
+  left: 400px;
 }
 
 .form .table .btn1:hover {
   color: #ff8000;
   border-color: #ff8000;
 }
-.form .photo {
-  margin-top: -100px;
-}
 
-.form input {
-  margin-top: 18px;
-}
-
-.form select {
-  margin-top: 18px;
+.form .table .btn1-disabled:hover {
+  color: none;
+  border-color: none;
 }
 
 @media screen and (max-width: 875px) {
   .form {
-    margin: 30px;
-    padding: 20px;
     flex-direction: column;
+    width: 90%;
+    margin: 0;
 }
-  .form .photo {
-  margin-top: 0;
+.form label{
+  font-size: small;
 }
-  
+
+p.danger {
+  font-size: small;
+}
+.table input{
+  width: 70%
+}
+
   .form .table {
     width: -webkit-fill-available;
+    padding: 30px;
+    min-height: 80vh;
+  max-height: 80vh;
 }
   .form .table input {
     width: -webkit-fill-available;

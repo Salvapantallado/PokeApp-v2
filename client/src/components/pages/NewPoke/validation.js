@@ -32,18 +32,18 @@ export function validation(input) {
     errors.speed = "Speed must be between 1 and 255";
   }
   if (!input.height) {
-    errors.height = "Heigth is required";
+    errors.height = "Height is required";
   } else if (
     !/^([0-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|25[0-5])$/.test(input.height)
   ) {
-    errors.height = "Heigth must be between 1 and 255";
+    errors.height = "Height must be between 1 and 255";
   }
   if (!input.weight) {
-    errors.weight = "Weigth is required";
+    errors.weight = "Weight is required";
   } else if (
     !/^([0-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|25[0-5])$/.test(input.weight)
   ) {
-    errors.weight = "Weigth must be between 1 and 255";
+    errors.weight = "Weight must be between 1 and 255";
   }
   if (!input.types || input.types === "null") {
     errors.types = "Type can not be null";

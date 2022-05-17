@@ -1,64 +1,51 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getPokemonByName } from "../../../actions";
+import React from "react";
 import Pokeball from "./Pokeball.png";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Plink from "../../helpers/plink.mp3";
 
 export function Navbar() {
-  const dispatch = useDispatch();
-  const [searchname, setSearchname] = useState("");
 
-  useEffect(() => {
-    dispatch(getPokemonByName(searchname));
-  }, [dispatch, searchname]);
+  const playAudio = () => {
+    new Audio(Plink).play();
+  };
 
   return (
     <div className="Navbar">
-      <div className="leftSide">
-        <img className="logo" src={Pokeball} alt="Logo" />
         <div className="links">
-          <NavLink
+          <Link
             to="/home"
             activeStyle={{
               fontWeight: "bold",
               color: "blue",
             }}
+            onClick={playAudio}
           >
             Home
-          </NavLink>
+          </Link>
+          <Link
+            to="/home"
+            activeStyle={{
+              fontWeight: "bold",
+              color: "blue",
+            }}
+            onClick={playAudio}
+          >
+             <img className="logo" src={Pokeball} alt="Logo" />
+          </Link>
+             
 
-          <NavLink
+          <Link
             to="/newpoke"
             activeStyle={{
               fontWeight: "bold",
               color: "blue",
             }}
+            onClick={playAudio}
           >
             Create Pokemon!
-          </NavLink>
+          </Link>
 
-          <NavLink
-            to="/home/filter"
-            activeStyle={{
-              fontWeight: "bold",
-              color: "blue",
-            }}
-          >
-            Filter
-          </NavLink>
-
-          <NavLink
-            to="/search"
-            activeStyle={{
-              fontWeight: "bold",
-              color: "blue",
-            }}
-          >
-            Search
-          </NavLink>
         </div>
-      </div>
     </div>
   );
 }

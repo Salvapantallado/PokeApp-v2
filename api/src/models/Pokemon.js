@@ -38,6 +38,9 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
       },
+      backimage: {
+        type: DataTypes.STRING,
+      }
     },
     {
       timestamps: false,

@@ -1,13 +1,19 @@
 .home {
   background: url("https://images7.alphacoders.com/310/310611.jpg") no-repeat
     center center fixed;
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  background-size: 100%;
+  background-size: cover;
+  min-height: 94vh;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.home button {
+
+
+.home-button {
   margin-right: 20px;
   width: 180px;
   height: 30px;
@@ -27,8 +33,29 @@
   border-color: #ff8000;
 }
 
+.home input{
+  margin: 3em;
+}
+
+.search-filter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media screen and (max-width: 875px) {
  .home{
    background-size: cover;
+   max-width: 875px;
+   margin: 0
   }
 }
+@media screen and (max-width: 480px) {
+  .home{
+    background-size: cover;
+    max-width: 480px;
+    margin: 0
+   }
+ }
+

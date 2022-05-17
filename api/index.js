@@ -24,7 +24,7 @@ const { POKETYPE_API_URL } = require("./constants");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(process.env.PORT, () => {
+  server.listen(3001, () => {
     console.log("Backend connected"); // eslint-disable-line no-console
     axios.get(POKETYPE_API_URL).then((element) => {
       element.data.results.forEach((el) =>
