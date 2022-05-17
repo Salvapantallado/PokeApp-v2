@@ -1,12 +1,4 @@
-<p align='left'>
-   
-</p>
-
 # Pokemon App project revamp
-
-<p align="left">
-  <img height="150" src="./pokemon.png" />
-</p>
 
 ## <h1>Fullstack web development project using: </h1> 
 
