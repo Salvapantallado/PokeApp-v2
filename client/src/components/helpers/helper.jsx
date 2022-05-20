@@ -32,7 +32,7 @@ export const colores = [
   {
     name: "fighting",
     color: "#C22E28",
-    icon: "https://commons.wikimedia.org/wiki/File:Pok%C3%A9mon_Fighting_Type_Icon.svg",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Pokémon_Fighting_Type_Icon.svg/120px-Pokémon_Fighting_Type_Icon.svg.png",
   },
   {
     name: "poison",

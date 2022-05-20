@@ -16,7 +16,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemonList: action.payload,
         searchedPokemon: [],
-        filteredPokemon: [],
+        filteredPokemon: action.payload,
       };
     case actions.GET_POKE_DETAIL:
       return {

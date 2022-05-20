@@ -5,6 +5,7 @@ import { getPokemons } from "../../../actions";
 import Pokemon from "../../component/Pokemon/Pokemon";
 import { Filter } from "../Filter/Filter";
 import Pagination from "../Pagination/pagination";
+import PokeError from "../Search/pokerror.png";
 
 export function Home() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export function Home() {
   const [pokemonsPerPage] = useState(12);
   let [currentPokemons] = useState([]);
   const [searchedPokemons, setSearchedPokemons] = useState("");
+  let currentFilter = useState([]);
   let [pokeSearch] = useState([]);
   let pageNumber = 0;
   useEffect(() => {
@@ -27,6 +29,8 @@ export function Home() {
   const firstPostIndex = lastPostIndex - pokemonsPerPage;
   currentPokemons = pokemonList.slice(firstPostIndex, lastPostIndex);
 
+  currentFilter = filteredArray.slice(firstPostIndex, lastPostIndex);
+
   if (filteredArray.length === 0) {
     pageNumber = Math.ceil(pokemonList.length / pokemonsPerPage);
   }
@@ -36,12 +40,19 @@ export function Home() {
 
   console.log(pageNumber);
 
-  const searchFilter = pokemonList.filter((val) => {
+  const searchFilter = filteredArray.filter((val) => {
     if (searchedPokemons === "" || searchedPokemons.length === 0) {
       return currentPokemons;
     }
     if (val.name.toLowerCase().includes(searchedPokemons.toLowerCase())) {
       return val;
+    }
+    if (val.name.toLowerCase().includes(!searchedPokemons.toLowerCase())) {
+      return (
+        <div>
+          <h1>No pokemon</h1>
+        </div>
+      );
     }
     return null;
   });
@@ -74,15 +85,23 @@ export function Home() {
           <Filter
             firstPostIndex={firstPostIndex}
             lastPostIndex={lastPostIndex}
+            currentFilter={currentFilter}
           />
         </div>
         <div className="row center">
-          {searchFilter.length === 0 ||
-          searchFilter.length === null ||
-          filteredArray.length > 0
-            ? null
-            : pokeSearch.map((pokemon) => {
+          {searchFilter.length === 0 || searchFilter.length === null ? (
+            <div style={{width: "auto", height: "auto", margin: "40px"}}>
+              <img src={PokeError} alt="error" />
+            </div>
+          ) : null}
+
+          {filteredArray.length === 0
+            ? currentFilter.map((pokemon) => {
                 return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>;
+              })
+            : pokeSearch.length > 0 &&
+              pokeSearch.map((pokemon) => {
+                return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>
               })}
         </div>
         <Pagination

@@ -14,20 +14,12 @@ export function Navbar() {
       <div className="links">
         <Link
           to="/home"
-          activeStyle={{
-            fontWeight: "bold",
-            color: "blue",
-          }}
           onClick={playAudio}
         >
           Home
         </Link>
         <Link
           to="/home"
-          activeStyle={{
-            fontWeight: "bold",
-            color: "blue",
-          }}
           onClick={playAudio}
         >
           <img className="logo" src={Pokeball} alt="Logo" />
@@ -35,10 +27,6 @@ export function Navbar() {
 
         <Link
           to="/newpoke"
-          activeStyle={{
-            fontWeight: "bold",
-            color: "blue",
-          }}
           onClick={playAudio}
         >
           Create Pokemon!

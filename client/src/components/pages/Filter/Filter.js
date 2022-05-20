@@ -4,7 +4,7 @@ import "./Filter.css";
 import { typeFilter, dataFilter, orderFilter } from "../../../actions/index.js";
 import Pokemon from "../../component/Pokemon/Pokemon.js";
 
-export function Filter({ firstPostIndex, lastPostIndex }) {
+export function Filter({ firstPostIndex, lastPostIndex, currentFilter }) {
   const dispatch = useDispatch();
 
   const filteredPokemon = useSelector((state) => state.filteredPokemon);
@@ -12,7 +12,7 @@ export function Filter({ firstPostIndex, lastPostIndex }) {
   const pokemonList = useSelector((state) => state.pokemonList);
   const [pokeType, setPokeType] = useState(filteredPokemon);
   const [showFilter, setShowFilter] = useState(false);
-  let currentFilter = useState([]);
+  // let currentFilter = useState([]);
   console.log(pokeType);
 
   currentFilter = filteredPokemon.slice(firstPostIndex, lastPostIndex);
@@ -29,7 +29,11 @@ export function Filter({ firstPostIndex, lastPostIndex }) {
     setPokeType(pokemonList);
 
     if (e === "all") {
-      dispatch(typeFilter(e, pokemonList));
+      Promise.all([
+        dispatch(typeFilter("all", pokemonList)),
+        dispatch(dataFilter("null", pokemonList)),
+        dispatch(orderFilter("null", pokemonList)),]
+      )
     }
     if (typeFilter(e, pokemonList)) {
       dispatch(typeFilter(e, pokemonList));
@@ -51,19 +55,7 @@ export function Filter({ firstPostIndex, lastPostIndex }) {
           <button onClick={() => setShowFilter(!showFilter)}>
             Show/Hide filters
           </button>
-
           <span>By type:</span>
-
-          {/* <select className="type" name="type" onChange={filter}>
-          <option value="null">All types</option>
-          {pokemonTypes &&
-            pokemonTypes.map((p, index) => (
-              <option value={p.name} key={index} name="p.name">
-                {p.name}
-              </option>
-            ))}
-        </select> */}
-
           <div className="type-filter" name="type">
             <button onClick={() => filter("all")}>All types</button>
             {pokemonTypes &&
@@ -99,14 +91,6 @@ export function Filter({ firstPostIndex, lastPostIndex }) {
             <option value="attack+">Attack +</option>
             <option value="attack-">Attack -</option>
           </select>
-          {/* <ul className="filter"> */}
-          <div className="row center">
-            {currentFilter.length > 0 &&
-              currentFilter.map((pokemon) => (
-                <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>
-              ))}
-            {/* </ul> */}
-          </div>
         </div>
       ) : (
         <div className="asc">
@@ -115,6 +99,12 @@ export function Filter({ firstPostIndex, lastPostIndex }) {
           </button>
         </div>
       )}
+          {/* <div className="row center">
+            {currentFilter.length > 0 &&
+              currentFilter.map((pokemon) => (
+                <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>
+              ))}
+          </div> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewPoke.css";
 import { validation } from "./validation.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ export function NewPoke() {
     history.push(path);
   };
 
-  const [input, setInput] = React.useState({
+  const [input, setInput] = useState({
     name: "",
     hp: "",
     attack: "",
@@ -28,10 +28,11 @@ export function NewPoke() {
     weight: "",
     types: "",
   });
+  console.log(input);
 
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = useState({});
 
-  const [Types, setTypes] = React.useState([]);
+  const [Types, setTypes] = useState([]);
 
   /*eslint-disable*/
   useEffect(() => {
@@ -44,13 +45,11 @@ export function NewPoke() {
       [e.target.name]: e.target.value,
       types: [{ name: input.types }],
     });
-    setErrors(
-      validation({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
+    setErrors(validation({...input, [e.target.name] : e.target.value}));
+    console.log(errors);
   };
+
+  console.log(errors);
 
   const handleTypes = (e) => {
     if (Types.length < 2) {
@@ -58,14 +57,15 @@ export function NewPoke() {
         setTypes([...Types, e.target.value]);
       }
     }
-  };
+  };``
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     try {
-      alert("Pokemon created!");
-      dispatch(createPokemon(input));
-      console.log(input);
+        alert("Pokemon created!");
+        dispatch(createPokemon(input));
+        console.log(input);
     } catch (err) {
       console.log(err);
     }
@@ -95,6 +95,8 @@ export function NewPoke() {
               <input
                 className={errors.hp && "danger"}
                 type="number"
+                min={1}
+                max={255}
                 name="hp"
                 onChange={handleInputChange}
                 value={input.hp}
@@ -106,6 +108,8 @@ export function NewPoke() {
                 <input
                   className={errors.attack && "danger"}
                   type="number"
+                  min={1}
+                  max={255}
                   name="attack"
                   onChange={handleInputChange}
                   value={input.attack}
@@ -117,6 +121,8 @@ export function NewPoke() {
                   <input
                     className={errors.defense && "danger"}
                     type="number"
+                    min={1}
+                    max={255}
                     name="defense"
                     onChange={handleInputChange}
                     value={input.defense}
@@ -128,6 +134,8 @@ export function NewPoke() {
                     <input
                       className={errors.speed && "danger"}
                       type="number"
+                      min={1}
+                      max={255}
                       name="speed"
                       onChange={handleInputChange}
                       value={input.speed}
@@ -139,6 +147,8 @@ export function NewPoke() {
                       <input
                         className={errors.height && "danger"}
                         type="number"
+                        min={1}
+                        max={255}
                         name="height"
                         onChange={handleInputChange}
                         value={input.height}
@@ -152,6 +162,8 @@ export function NewPoke() {
                         <input
                           className={errors.weight && "danger"}
                           type="number"
+                          min={1}
+                          max={255}
                           name="weight"
                           onChange={handleInputChange}
                           value={input.weight}
