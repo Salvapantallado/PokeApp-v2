@@ -38,7 +38,7 @@
 }
 
 .type-filter {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,5 +142,20 @@
     margin: 0;
     padding: 0;
     justify-content: center;
+  }
+  .type-filter{
+    width: 100%;
+  }
+  .type-filter button {
+    margin-right: 10px;
+    width: 150px;
+    height: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: fixed;
+    left: 400px;
   }
 }

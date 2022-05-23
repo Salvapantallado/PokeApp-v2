@@ -3,10 +3,11 @@ import "./NewPoke.css";
 import { validation } from "./validation.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { createPokemon } from "../../../actions";
+import { createPokemon, getTypes } from "../../../actions";
 import goBack from "../../helpers/goBack.png";
 import { useHistory } from "react-router-dom";
 import Bump from "../../helpers/Bump.mp3";
+import Success from "../../helpers/PokeCaught.mp3";
 
 export function NewPoke() {
   const dispatch = useDispatch();
@@ -39,13 +40,17 @@ export function NewPoke() {
     setInput({ ...input, types: Types });
   }, [Types]);
 
+  useEffect(() => {
+    dispatch(getTypes())
+  }, [dispatch])
+
   const handleInputChange = function (e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
       types: [{ name: input.types }],
     });
-    setErrors(validation({...input, [e.target.name] : e.target.value}));
+    setErrors(validation({ ...input, [e.target.name]: e.target.value }));
     console.log(errors);
   };
 
@@ -57,19 +62,25 @@ export function NewPoke() {
         setTypes([...Types, e.target.value]);
       }
     }
-  };``
+  };
+  ``;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-        alert("Pokemon created!");
-        dispatch(createPokemon(input));
-        console.log(input);
+      new Audio(Success).play();
+      alert("Pokemon created!");
+      dispatch(createPokemon(input));
+      console.log(input);
+      setTimeout(() => {
+        history.push("/home");
+      }, 2000);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="home">
       <div className="form">
@@ -202,13 +213,14 @@ export function NewPoke() {
             </div>
           </div>
           {!input.name ||
+          !input.hp ||
+          !input.attack ||
           !input.defense ||
           !input.speed ||
-          !input.attack ||
-          !input.hp ||
-          !input.weight ||
           !input.height ||
-          !input.types ? (
+          !input.weight ||
+          Types.length === 0 ||
+          Types.length > 2 ? (
             <button className="btn1-disabled" type="submit" disabled="disabled">
               Create!
             </button>

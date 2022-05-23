@@ -1,7 +1,7 @@
 import "./Home.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../../../actions";
+import { getPokemons, getTypes } from "../../../actions";
 import Pokemon from "../../component/Pokemon/Pokemon";
 import { Filter } from "../Filter/Filter";
 import Pagination from "../Pagination/pagination";
@@ -14,13 +14,16 @@ export function Home() {
   console.log(filteredArray);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(12);
-  let [currentPokemons] = useState([]);
   const [searchedPokemons, setSearchedPokemons] = useState("");
+  let [currentPokemons] = useState([]);
   let currentFilter = useState([]);
   let [pokeSearch] = useState([]);
   let pageNumber = 0;
+
+
   useEffect(() => {
     dispatch(getPokemons());
+    dispatch(getTypes());
   }, [dispatch]);
 
   console.log(pokemonList);
@@ -89,8 +92,9 @@ export function Home() {
           />
         </div>
         <div className="row center">
-          {searchFilter.length === 0 || searchFilter.length === null ? (
-            <div style={{width: "auto", height: "auto", margin: "40px"}}>
+          {(searchFilter.length === 0 || searchFilter.length === null) &&
+          (currentFilter.length === 0 || currentFilter.length === null) ? (
+            <div style={{ width: "auto", height: "auto", margin: "40px" }}>
               <img src={PokeError} alt="error" />
             </div>
           ) : null}
@@ -101,7 +105,7 @@ export function Home() {
               })
             : pokeSearch.length > 0 &&
               pokeSearch.map((pokemon) => {
-                return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>
+                return <Pokemon pokemon={pokemon} key={pokemon.id}></Pokemon>;
               })}
         </div>
         <Pagination

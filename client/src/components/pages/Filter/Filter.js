@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Filter.css";
 import { typeFilter, dataFilter, orderFilter } from "../../../actions/index.js";
-import Pokemon from "../../component/Pokemon/Pokemon.js";
 
 export function Filter({ firstPostIndex, lastPostIndex, currentFilter }) {
   const dispatch = useDispatch();
@@ -45,7 +44,7 @@ export function Filter({ firstPostIndex, lastPostIndex, currentFilter }) {
   }
 
   function filterOrder(e) {
-    dispatch(orderFilter(e.target.value, pokemonList));
+    dispatch(orderFilter(e.target.value, currentFilter));
   }
 
   return (

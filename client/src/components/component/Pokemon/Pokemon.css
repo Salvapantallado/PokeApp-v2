@@ -59,6 +59,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  transform-origin:center;
+  transform:perspective(800px) rotateY(35deg) rotateX(35deg);
+  transition:0.5s;
 }
 
 .card-body > * {
@@ -114,5 +117,6 @@
     align-items: center;
     justify-content: center;
     min-width: 300px;
+    transform: none;
   }
 }

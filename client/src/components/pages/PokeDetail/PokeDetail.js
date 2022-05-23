@@ -120,7 +120,11 @@ export function PokeDetail() {
                     />
                     <ul>
                       <li>
-                        <h4>{`#${pokemonDetail[0].id} ${pokemonDetail[0].name}`}</h4>
+                        {pokemonDetail[0].id.length > 3 ? (
+                          <h4>{`${pokemonDetail[0].name}`}</h4>
+                        ) : (
+                          <h4>{`#${pokemonDetail[0].id} ${pokemonDetail[0].name}`}</h4>
+                        )}
                       </li>
                       <li>
                         <h4>{`HP: ${pokemonDetail[0].hp}`}</h4>
@@ -193,7 +197,11 @@ export function PokeDetail() {
                     />
                     <ul>
                       <li>
-                        <h4>{`#${pokemonDetail[0].id} ${pokemonDetail[0].name}`}</h4>
+                        {pokemonDetail[0].id.length > 3 ? (
+                          <h4>{`${pokemonDetail[0].name}`}</h4>
+                        ) : (
+                          <h4>{`#${pokemonDetail[0].id} ${pokemonDetail[0].name}`}</h4>
+                        )}
                       </li>
                       <li>
                         <h4>{`HP: ${pokemonDetail[0].hp}`}</h4>
