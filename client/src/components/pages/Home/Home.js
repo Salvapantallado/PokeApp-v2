@@ -11,7 +11,7 @@ export function Home() {
   const dispatch = useDispatch();
   const pokemonList = useSelector((state) => state.pokemonList);
   const filteredArray = useSelector((state) => state.filteredPokemon);
-  console.log(filteredArray);
+  //console.log(filteredArray);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(12);
   const [searchedPokemons, setSearchedPokemons] = useState("");
@@ -26,7 +26,7 @@ export function Home() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  console.log(pokemonList);
+  //console.log(pokemonList);
 
   const lastPostIndex = currentPage * pokemonsPerPage;
   const firstPostIndex = lastPostIndex - pokemonsPerPage;
@@ -64,7 +64,7 @@ export function Home() {
   const firstPostIndex2 = lastPostIndex - pokemonsPerPage;
   pokeSearch = searchFilter.slice(firstPostIndex2, lastPostIndex2);
 
-  console.log(searchedPokemons);
+ // console.log(searchedPokemons);
 
   if (pokemonList.length < 12) {
     return (
