@@ -12,7 +12,7 @@ export function Filter({ firstPostIndex, lastPostIndex, currentFilter }) {
   const [pokeType, setPokeType] = useState(filteredPokemon);
   const [showFilter, setShowFilter] = useState(false);
   // let currentFilter = useState([]);
-  console.log(pokeType);
+
 
   currentFilter = filteredPokemon.slice(firstPostIndex, lastPostIndex);
 
