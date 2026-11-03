@@ -20,6 +20,7 @@
     "ioredis": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "node": "^27.0.0-alpha.0.0.0",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
     "uuid": "^8.3.2"
